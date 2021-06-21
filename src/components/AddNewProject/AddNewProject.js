@@ -40,6 +40,7 @@ function AddNewProject() {
   const [title, setTitle] = useState('');
   const [level, setLevel] = useState('');
   const [desc, setDesc] = useState('');
+  const [additional, setAdditional] = useState("");
   const projectSkill = [
     'JavaScript',
     'Node',
@@ -55,8 +56,8 @@ function AddNewProject() {
     'C++',
     'C',
     'FullStack',
-    'flutter',
-    'android',
+    'Flutter',
+    'Android',
     'MERN',
     'Backend',
     'Frontend',
@@ -120,6 +121,7 @@ function AddNewProject() {
         setTitle('');
         setLevel('');
         setDesc('');
+        setAdditional('');
         setSkillInputs(['']);
       } catch (err) {
         console.log(err);
@@ -131,43 +133,46 @@ function AddNewProject() {
     <div>
       <ToastContainer />
       <Box
-        display='flex'
-        alignItems='center'
-        justifyContent='center'
-        minHeight='90vh'>
-        <Box boxShadow={1} width='80%' padding='2rem'>
-          <Typography variant='h4' className={classes.text}>
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        minHeight="90vh"
+      >
+        <Box boxShadow={1} width="80%" padding="2rem">
+          <Typography variant="h4" className={classes.text}>
             Add New Project
           </Typography>
           <FormControl fullWidth>
             <TextField
-              label='Project Title'
-              variant='outlined'
+              label="Project Title"
+              variant="outlined"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required={true}
             />
 
             <FormControl
-              variant='outlined'
+              variant="outlined"
               className={classes.mt}
-              required={true}>
+              required={true}
+            >
               <InputLabel>Project Level</InputLabel>
               <Select
                 value={level}
                 onChange={(e) => {
                   setLevel(e.target.value);
                 }}
-                label='Project Level'>
-                <MenuItem value={'Beginner'}>Beginner </MenuItem>
-                <MenuItem value={'Intermediate'}>Intermediate</MenuItem>
-                <MenuItem value={'Advanced'}>Advanced</MenuItem>
+                label="Project Level"
+              >
+                <MenuItem value={"Beginner"}>Beginner </MenuItem>
+                <MenuItem value={"Intermediate"}>Intermediate</MenuItem>
+                <MenuItem value={"Advanced"}>Advanced</MenuItem>
               </Select>
             </FormControl>
             <Autocomplete
               className={classes.mt}
               multiple
-              id='tags-outlined'
+              id="tags-outlined"
               freeSolo={true}
               options={projectSkill}
               getOptionLabel={(option) => option}
@@ -180,30 +185,42 @@ function AddNewProject() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  variant='outlined'
-                  label='Project Skill'
-                  placeholder='Add Project Skills'
+                  variant="outlined"
+                  label="Project Skill"
+                  placeholder="Add Project Skills"
                   required
                 />
               )}
             />
 
             <TextareaAutosize
-              aria-label='minimum height'
+              aria-label="minimum height"
               className={classes.textarea}
               rowsMin={5}
-              placeholder='Description'
+              placeholder="Description"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
               required={true}
             />
 
+            <TextareaAutosize
+              aria-label="minimum height"
+              className={classes.textarea}
+              rowsMin={3}
+              placeholder="Add Links for Reference  
+              Eg: Github/Live Website etc."
+              value={additional}
+              onChange={(e) => setAdditional(e.target.value)}
+              required={true}
+            />
+
             <Button
-              variant='contained'
+              variant="contained"
               style={submitBtnStyle}
               className={classes.mt}
               startIcon={<PublishIcon />}
-              onClick={handleSubmit}>
+              onClick={handleSubmit}
+            >
               Submit
             </Button>
           </FormControl>

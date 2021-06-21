@@ -11,8 +11,7 @@ export const darkTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-
-    ${'' /* .input,input{
+    .input,input{
         color:${(props) => !props.theme.fontColor};
         background-color: ${(props) => props.theme.body};
         border:1px solid grey;
@@ -44,7 +43,5 @@ export const GlobalStyles = createGlobalStyle`
 
     legend{
         background-color:pink;
-    } */}
-
-
+    }
 `;
